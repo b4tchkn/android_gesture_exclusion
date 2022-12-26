@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('android_gesture_exclusion example'),
         ),
         body: Center(
           child: Column(
@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
               AndroidGestureExclusionContainer(
                 verticalExclusionMargin: 20,
                 child: Slider(
-                  value: _position,
+                  value: _position2,
                   onChanged: (newPosition) {
                     setState(() {
                       _position2 = newPosition;
