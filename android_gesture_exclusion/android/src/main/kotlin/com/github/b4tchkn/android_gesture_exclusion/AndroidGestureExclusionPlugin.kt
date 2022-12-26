@@ -1,35 +1,67 @@
 package com.github.b4tchkn.android_gesture_exclusion
 
-import androidx.annotation.NonNull
-
+import android.app.Activity
+import android.graphics.Rect
+import androidx.core.view.ViewCompat
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-/** AndroidGestureExclusionPlugin */
-class AndroidGestureExclusionPlugin: FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
+class AndroidGestureExclusionPlugin : FlutterPlugin, ActivityAware {
+    private var methodChannel: MethodChannel? = null;
 
-  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "android_gesture_exclusion")
-    channel.setMethodCallHandler(this)
-  }
-
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        methodChannel = MethodChannel(
+            flutterPluginBinding.binaryMessenger,
+            "com.github.b4tchkn/android_gesture_exclusion"
+        )
     }
-  }
 
-  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
-  }
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        methodChannel?.setMethodCallHandler(null)
+        methodChannel = null
+    }
+
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+        methodChannel?.setMethodCallHandler(AndroidGestureExclusionMethodHandler(binding.activity))
+    }
+
+    override fun onDetachedFromActivityForConfigChanges() {
+        methodChannel?.setMethodCallHandler(null)
+    }
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+        methodChannel?.setMethodCallHandler(AndroidGestureExclusionMethodHandler(binding.activity))
+    }
+
+    override fun onDetachedFromActivity() {
+        methodChannel?.setMethodCallHandler(null)
+    }
+}
+
+private class AndroidGestureExclusionMethodHandler(private val activity: Activity) :
+    MethodChannel.MethodCallHandler {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+        when (call.method) {
+            "setSystemGestureExclusionRects" -> {
+                val arguments = call.arguments as List<Map<String, Int>>
+                val decodedRects = decodeExclusionRects(arguments)
+                ViewCompat.setSystemGestureExclusionRects(activity.window.decorView, decodedRects)
+                result.success(null)
+            }
+        }
+    }
+
+    private fun decodeExclusionRects(inputRects: List<Map<String, Int>>): List<Rect> =
+        inputRects.mapIndexed { index, item ->
+            Rect(
+                item["left"] ?: error("rect at index $index doesn't contain 'left' property"),
+                item["top"] ?: error("rect at index $index doesn't contain 'top' property"),
+                item["right"] ?: error("rect at index $index doesn't contain 'right' property"),
+                item["bottom"] ?: error("rect at index $index doesn't contain 'bottom' property")
+            )
+        }
 }
