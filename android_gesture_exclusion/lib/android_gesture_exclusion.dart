@@ -96,7 +96,6 @@ class _GestureExclusion extends SingleChildRenderObjectWidget {
   @override
   void updateRenderObject(
     BuildContext context,
-    // ignore: library_private_types_in_public_api
     _RenderGestureExclusion renderObject,
   ) {
     renderObject
