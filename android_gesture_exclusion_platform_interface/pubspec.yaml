@@ -1,7 +1,10 @@
 name: android_gesture_exclusion_platform_interface
-description: A common platform interface for the android gesture exclude plugin.
-version: 0.0.1
-publish_to: none
+description: A common platform interface for the android_gesture_exclusion plugin. Different platform implementations of android_gesture_exclusion should implement this interface.
+version: 0.1.0
+homepage: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/android_gesture_exclusion_platform_interface
+repository: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/android_gesture_exclusion_platform_interface
+documentation: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/android_gesture_exclusion_platform_interface
+issue_tracker: https://github.com/b4tchkn/android_gesture_exclusion/issues
 
 environment:
   sdk: '>=2.18.4 <3.0.0'

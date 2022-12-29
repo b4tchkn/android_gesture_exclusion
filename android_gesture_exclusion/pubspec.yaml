@@ -1,9 +1,9 @@
 name: android_gesture_exclusion
-description: A new Flutter project.
-version: 0.0.1
-homepage: https://github.com/b4tchkn/android_gesture_exclusion
-repository: https://github.com/b4tchkn/android_gesture_exclusion
-documentation: https://github.com/b4tchkn/android_gesture_exclusion
+description: Flutter plugin to exclude android gesture navigation.
+version: 0.1.0
+homepage: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/android_gesture_exclusion
+repository: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/android_gesture_exclusion
+documentation: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/android_gesture_exclusion
 issue_tracker: https://github.com/b4tchkn/android_gesture_exclusion/issues
 
 environment:

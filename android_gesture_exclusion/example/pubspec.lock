@@ -7,14 +7,14 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   android_gesture_exclusion_platform_interface:
     dependency: transitive
     description:
       path: "../../android_gesture_exclusion_platform_interface"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   async:
     dependency: transitive
     description:
