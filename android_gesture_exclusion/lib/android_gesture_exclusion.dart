@@ -5,21 +5,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+/// Provides public API to call setSystemGestureExclusionRects manually.
+/// Manually set the Rect of the Widget obtained through GlobalKey.
 class AndroidGestureExclusion {
   AndroidGestureExclusion._();
 
+  /// The instance of [AndroidGestureExclusionPlatform] to use.
+  /// By default, the implementation of
+  /// [MethodChannelAndroidGestureExclusionPlatformInterface] is used.
   static final instance = AndroidGestureExclusion._();
 
   static AndroidGestureExclusionPlatform get _platform =>
       AndroidGestureExclusionPlatform.instance;
 
+  /// Set the rects you want to exclude.
   void setRects(List<Rect> rects) =>
       _platform.setSystemGestureExclusionRects(rects);
 
+  /// Clear exclusion rects.
   void clear() => _platform.setSystemGestureExclusionRects([]);
 }
 
+/// Widget to Exclude the area of wrapped Widget.
+/// Exclude wrapped Widget each time performLayout of RenderObject is called.
 class AndroidGestureExclusionContainer extends StatefulWidget {
+  /// Constructs an instance of [AndroidGestureExclusionContainer].
+  ///
+  /// The [verticalExclusionMargin] is optional.
+  /// Default value is 0.
+  ///
+  /// The [horizontalExclusionMargin] is optional.
+  /// Default value is 0.
+  ///
+  /// The [child] is always required.
   const AndroidGestureExclusionContainer({
     Key? key,
     this.verticalExclusionMargin = 0,
@@ -27,8 +45,13 @@ class AndroidGestureExclusionContainer extends StatefulWidget {
     required this.child,
   }) : super(key: key);
 
+  /// Margin value to be set vertically to the [child]
   final double verticalExclusionMargin;
+
+  /// Margin value to be set horizontally to the [child]
   final double horizontalExclusionMargin;
+
+  /// Widget to exclude gesture.
   final Widget child;
 
   @override
