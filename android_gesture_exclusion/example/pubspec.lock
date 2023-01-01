@@ -11,9 +11,9 @@ packages:
   android_gesture_exclusion_platform_interface:
     dependency: transitive
     description:
-      path: "../../android_gesture_exclusion_platform_interface"
-      relative: true
-    source: path
+      name: android_gesture_exclusion_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.1.0"
   async:
     dependency: transitive

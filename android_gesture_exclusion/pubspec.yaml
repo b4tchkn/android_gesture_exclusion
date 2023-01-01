@@ -14,8 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   visibility_detector: ^0.3.3
-  android_gesture_exclusion_platform_interface:
-    path: ../android_gesture_exclusion_platform_interface
+  android_gesture_exclusion_platform_interface: ^0.1.0
 
 dev_dependencies:
   flutter_test:
