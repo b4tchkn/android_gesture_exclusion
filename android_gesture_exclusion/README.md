@@ -1,7 +1,8 @@
 # android_gesture_exclusion
 
 This plugin wraps
-the Android's [View#getSystemGestureExclusionRects()](https://developer.android.com/reference/android/view/View#getSystemGestureExclusionRects())
+the
+Android's [View#getSystemGestureExclusionRects()](https://developer.android.com/reference/android/view/View#getSystemGestureExclusionRects())
 API to avoid conflict between Gesture Navigation supported in Android 10 (API level 29) and later
 and the existing UI swipe gestures from either the left or the right edge of the screen. This plugin
 works only on Android.
@@ -39,7 +40,10 @@ final rect = Rect.fromLTRB(left, top, right, bottom);
 
 // You can create instance and set some rects wants to exclude gesture navigation.
 final androidGestureExclusion = AndroidGestureExclusion.instance;
-androidGestureExclusion.setRects([rect]);
+androidGestureExclusion.setRects
+([rect
+]
+);
 ```
 
 ### Using Widget
