@@ -1,6 +1,6 @@
 name: Feature Request
 description: File a feature request
-title: '[FR] '
+title: ''
 labels: []
 body:
   - type: markdown
