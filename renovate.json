@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "branchPrefix": "chore-renovate-",
+  "timezone": "Asia/Tokyo",
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}
