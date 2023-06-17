@@ -1,0 +1,26 @@
+name: Flutter Andoroid Build
+
+on:
+  pull_request:
+    types: [ opened, ready_for_review, reopened, synchronize ]
+  push:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.12'
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build appbundle
