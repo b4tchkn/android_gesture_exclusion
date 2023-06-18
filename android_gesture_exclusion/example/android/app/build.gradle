@@ -60,6 +60,8 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    namespace 'com.github.b4tchkn.android_gesture_exclusion_example'
 }
 
 flutter {

@@ -43,4 +43,6 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
+
+    namespace 'com.github.b4tchkn.android_gesture_exclusion'
 }
