@@ -21,6 +21,9 @@ jobs:
           flutter-version: '3.7.12'
           channel: 'stable'
           cache: true
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build appbundle
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Run test
+        run: flutter test
+      - name: Run build
+        run: flutter build appbundle
