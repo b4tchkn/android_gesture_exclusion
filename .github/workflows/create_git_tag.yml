@@ -1,0 +1,17 @@
+name: Create Git Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_git_tag:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.head_commit.message, 'release:')
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create & Push Tag
+        run: |
+          git tag $(cat .app-version)
+          git push origin $(cat .app-version)
