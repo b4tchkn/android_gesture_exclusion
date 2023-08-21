@@ -8,10 +8,10 @@ on:
 jobs:
   create_git_tag:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.head_commit.message, 'release:')
+    if: startsWith(github.event.head_commit.message, '[android_gesture_exclusion] release:')
     steps:
       - uses: actions/checkout@v3
       - name: Create & Push Tag
         run: |
-          git tag android_gesture_exclusion-v$(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":")
-          git push origin android_gesture_exclusion-v$(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":")
+          git tag android_gesture_exclusion-v$(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":" | sed 's/ //g')
+          git push origin android_gesture_exclusion-v$(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":" | sed 's/ //g')
