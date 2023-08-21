@@ -13,5 +13,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create & Push Tag
         run: |
-          git tag $(cat .app-version)
-          git push origin $(cat .app-version)
+          git tag $(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":")
+          git push origin $(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":")
