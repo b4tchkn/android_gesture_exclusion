@@ -7,7 +7,7 @@ documentation: https://github.com/b4tchkn/android_gesture_exclusion/tree/main/an
 issue_tracker: https://github.com/b4tchkn/android_gesture_exclusion/issues
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '<4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
