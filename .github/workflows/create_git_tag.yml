@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.event.head_commit.message, '[android_gesture_exclusion] release:')
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Create & Push Tag
         run: |
           git tag android_gesture_exclusion-v$(grep version: android_gesture_exclusion/pubspec.yaml | cut -f 2 -d ":" | sed 's/ //g')
