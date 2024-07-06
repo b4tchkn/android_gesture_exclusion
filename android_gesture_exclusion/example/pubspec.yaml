@@ -2,7 +2,8 @@ name: android_gesture_exclusion_example
 description: Demonstrates how to use the android_gesture_exclusion plugin.
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=2.18.4 <4.0.0'
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
