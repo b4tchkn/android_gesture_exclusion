@@ -2,7 +2,7 @@ group 'com.github.b4tchkn.android_gesture_exclusion'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.0'
+    ext.kotlin_version = '1.9.24'
     repositories {
         google()
         mavenCentral()
