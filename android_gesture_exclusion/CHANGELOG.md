@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Update android_gesture_exclusion_platform_interface to 0.2.0
+
 ## 0.2.1
 
 - Fix gesture_detector version to ^0.4.0+2
