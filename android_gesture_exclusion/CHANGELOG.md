@@ -1,3 +1,8 @@
+## 0.4.0
+
+- Update dependency gradle to v8.9
+- Update dependency com.android.tools.build:gradle to v8.5.1
+
 ## 0.3.0
 
 - Update android_gesture_exclusion_platform_interface to 0.2.0
